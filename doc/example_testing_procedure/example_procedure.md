@@ -38,7 +38,7 @@ And now to the procedure:
    -  ```show tables;``` look at the Tables
    -  ```show TIGGERS \G;``` look at the Triggers
    -  ```select * from books Limit 5;``` look at some entries 
-   -  We see that we do not have a simple data model here, but one that follows the 3NF. Therefore we consider the example separately. And also, because we have here also a continuous adjustment by the Tigger, which is efficient, in contrast to a "Full Diff Compare". Denormalization and continuous insertion strategy is defined in the pipeline.
+   -  We have here a continuous adjustment by the Tigger, which is efficient, in contrast to a "Full Diff Compare". Continuous insertion strategy is defined in the pipeline.
 9. http://localhost:5601/app/dev_tools#/console now we can again look in Kibana in the Dev Tools
    -  ```GET books/_search{
       "query": {

@@ -8,7 +8,7 @@
 - [example procedure](https://github.com/PanzerknackerR/elasticsearch_multisouce_searchengine/blob/main/doc/example_testing_procedure/example_procedure.md)
 
 #### architecture:
-![archtitecture](https://github.com/PanzerknackerR/DASHPasswordManager/blob/main/doc/pictures/prototyp_architecture.png)
+![archtitecture](https://github.com/PanzerknackerR/elasticsearch_multisouce_searchengine/blob/main/doc/figures/searchengine_architecture.png)
 
 #### supporting links used to build this system
 - https://www.docker.com/get-started

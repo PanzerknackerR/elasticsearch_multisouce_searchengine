@@ -72,7 +72,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - ./volumes/elasticsearch:/usr/share/elasticsearch/data
+      - elasticsearch-data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
     logging:
@@ -142,3 +142,4 @@ services:
       - postgres-data:/var/lib/postgresql/data/ # persist data even if container shuts down       
 volumes:
   postgres-data: # named volumes can be managed easier using docker-compose
+  elasticsearch-data: 

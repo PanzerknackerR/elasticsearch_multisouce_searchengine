@@ -17,7 +17,7 @@ def create_table():
         """
         CREATE TABLE python_test(
             id UUID PRIMARY KEY,
-            str_col VARCHAR(500),
+            str_col VARCHAR(5000),
             int_col SMALLINT,
             bool_col BOOLEAN,
             float_col DECIMAL)

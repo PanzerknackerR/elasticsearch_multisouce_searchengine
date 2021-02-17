@@ -33,12 +33,12 @@ And now to the procedure:
 6. ```docker-compose up logstash_postgres``` Now we start Logstash to bring our data into elasticsearch. Here we have provided only one initialization pipeline.
 7. Repeat step 5 and look at the results. The data was successfully brought into Elasticsearch and can be processed using Kibana.
 8. [3]: ```docker exec -it demo_mysql bash```Now we start the second part of the demo, now we look at the MySQL DB. 
-  -  ```mysql -uavid_reader -pi_love_books``` Login into the DB 
-  -  ```use books;``` Choose DB.
-  -  ```show tables;``` look at the Tables
-  -  ```show TIGGERS \G;``` look at the Triggers
-  -  ```select * from books Limit 5;``` look at some entries 
-  -  We see that we do not have a simple data model here, but one that follows the 3NF. Therefore we consider the example separately. And also, because we have here also a continuous adjustment by the Tigger, which is efficient, in contrast to a "Full Diff Compare". Denormalization and continuous insertion strategy is defined in the pipeline.
+   -  ```mysql -uavid_reader -pi_love_books``` Login into the DB 
+   -  ```use books;``` Choose DB.
+   -  ```show tables;``` look at the Tables
+   -  ```show TIGGERS \G;``` look at the Triggers
+   -  ```select * from books Limit 5;``` look at some entries 
+   -  We see that we do not have a simple data model here, but one that follows the 3NF. Therefore we consider the example separately. And also, because we have here also a continuous adjustment by the Tigger, which is efficient, in contrast to a "Full Diff Compare". Denormalization and continuous insertion strategy is defined in the pipeline.
 9. http://localhost:5601/app/dev_tools#/console now we can again look in Kibana in the Dev Tools
    -  ```GET books/_search{
       "query": {

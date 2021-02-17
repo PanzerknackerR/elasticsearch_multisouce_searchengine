@@ -50,14 +50,14 @@ And now to the procedure:
       ```
       With this query we can see that there are no entries yet. The value can be changed as desired.
 10. [1]: ```docker-compose up -d logstash_mysql``` Now we start the pipelines, here are two defined one for initializing and one for continuous changes.
-  - Repeat step 9 and look at the results.
-  - [3]: ```delete from books where isbn='9780001000391';``` Delete this entry
-  - [3]: ```select * from books Limit 5;``` Verity that its gone
-  - Repeat step 9 and look at the results.
-  - [3] ```update books set title ='NEW TITLE' where isbn='9780006482079';``` Modify one Entry
-  - [3]: ```select * from books Limit 5;``` Verity that the modifications are correct
-  - Repeat step 9, but change the isbn value to ```"9780006482079"```
-  - We have only ensured that a denominalization and also a continuous adjustment is possible.
+   - Repeat step 9 and look at the results.
+   - [3]: ```delete from books where isbn='9780001000391';``` Delete this entry
+   - [3]: ```select * from books Limit 5;``` Verity that its gone
+   - Repeat step 9 and look at the results.
+   - [3] ```update books set title ='NEW TITLE' where isbn='9780006482079';``` Modify one Entry
+   - [3]: ```select * from books Limit 5;``` Verity that the modifications are correct
+   - Repeat step 9, but change the isbn value to ```"9780006482079"```
+   - We have only ensured that a denominalization and also a continuous adjustment is possible.
 11. [1]: ```docker-compose up eventdata``` Here now runs a python script that pushes all always 10 entries into Elasticsearch. Time intervals from 0.0 always 0.01 second more pause, at 10 seconds it stops.
 12. http://localhost:5601/app/dev_tools#/console now we can again look in Kibana in the Dev Tools
    -  ```GET event_data/_search{

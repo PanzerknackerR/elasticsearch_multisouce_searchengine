@@ -8,6 +8,8 @@
 - [example procedure](https://github.com/PanzerknackerR/elasticsearch_multisouce_searchengine/blob/main/doc/example_testing_procedure/example_procedure.md)
 
 #### supporting links used to build this system
+- (https://www.docker.com/get-started)
+- (https://docs.docker.com/compose/)
 - (https://kb.objectrocket.com/postgresql/generate-postgres-test-data-with-python-part-1-1252)
 - (https://kb.objectrocket.com/postgresql/generate-postgres-test-data-with-python-part-2-1253)
 - (https://hub.docker.com/_/postgres)

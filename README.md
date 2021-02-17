@@ -7,6 +7,9 @@
 #### here is a example procedure to explore our searchengine:
 - [example procedure](https://github.com/PanzerknackerR/elasticsearch_multisouce_searchengine/blob/main/doc/example_testing_procedure/example_procedure.md)
 
+#### architecture:
+![archtitecture](https://github.com/PanzerknackerR/DASHPasswordManager/blob/main/doc/pictures/prototyp_architecture.png)
+
 #### supporting links used to build this system
 - https://www.docker.com/get-started
 - https://docs.docker.com/compose/

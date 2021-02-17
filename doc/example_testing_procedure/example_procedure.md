@@ -60,7 +60,7 @@ And now to the procedure:
     - We have only ensured that a denominalization and also a continuous adjustment is possible.
 11. [1]: ```docker-compose up eventdata``` Here now runs a python script that pushes all always 10 entries into Elasticsearch. Time intervals from 0.0 always 0.01 second more pause, at 10 seconds it stops.
 12. http://localhost:5601/app/dev_tools#/console now we can again look in Kibana in the Dev Tools
-   -  ```GET event_data/_search{
+     -  ```GET event_data/_search{
       "query": {
          "match": {
            "str_col": "Bestsellerlisten"
@@ -69,7 +69,7 @@ And now to the procedure:
        }
       ```
       With this query we can see that there are some Results, which change over time, the more often we make the request
-  - Thereby we see that also the direct insertion of data into Elasticsearch is possible. 
+    - Thereby we see that also the direct insertion of data into Elasticsearch is possible. 
   
          
 

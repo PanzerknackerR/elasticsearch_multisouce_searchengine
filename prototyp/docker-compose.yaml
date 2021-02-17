@@ -1,0 +1,144 @@
+version: "3"
+services:
+  eventdata:
+    build:
+      context: .
+      dockerfile: Dockerfile-eventdata
+    container_name: demo_eventdata
+    # restart: on-failure
+    depends_on:
+      - elasticsearch
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "10"
+  create_table-postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile-create_postgre_table
+    container_name: demo_create_table-postgres
+    # restart: on-failure
+    depends_on:
+      - postgres
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "10"
+  generate_data-postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile-generate_data
+    container_name: demo_generate_data-postgres
+    # restart: on-failure
+    depends_on:
+      - postgres
+      - create_table-postgres
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "10"
+  mysql:
+    image: mysql:8
+    container_name: demo_mysql
+    # restart: on-failure
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: books
+      MYSQL_USER: avid_reader
+      MYSQL_PASSWORD: i_love_books
+    volumes:
+      # Dump files for initiating tables
+      - ./data/:/docker-entrypoint-initdb.d/
+    logging:
+        driver: "json-file"
+        options:
+            max-size: "10k"
+            max-file: "10"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
+    container_name: demo_elasticsearch
+    # restart: on-failure
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./volumes/elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    logging:
+        driver: "json-file"
+        options:
+            max-size: "10k"
+            max-file: "10"
+  logstash_mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile-logstash-mysql
+    container_name: demo_logstash_mysql
+    # restart: on-failure
+    depends_on:
+      - mysql
+      - elasticsearch
+    volumes:
+      - ./volumes/logstash-mysql/pipeline/:/usr/share/logstash/pipeline/
+      - ./volumes/logstash-mysql/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./volumes/logstash-mysql/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+      - ./volumes/logstash-mysql/config/queries/:/usr/share/logstash/config/queries/
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "10"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.3
+    container_name: demo_kibana
+    environment:
+      - "ELASTICSEARCH_URL=http://elasticsearch:9200"
+      - "SERVER_NAME=127.0.0.1"
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+  logstash_postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile-logstash-postgres
+    container_name: demo_postgres_logstash
+    # restart: on-failure
+    depends_on:
+      - create_table-postgres
+      - generate_data-postgres
+      - postgres
+      - elasticsearch
+    volumes:
+      - ./volumes/logstash-postgres/pipeline/:/usr/share/logstash/pipeline/
+      - ./volumes/logstash-postgres/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./volumes/logstash-postgres/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+      - ./volumes/logstash-postgres/config/queries/:/usr/share/logstash/config/queries/
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "10"
+  postgres:
+    image: "postgres" # use latest official postgres version
+    container_name: demo_postgres
+    ports:
+      - '5436:5432'
+    restart: always
+    env_file:
+      - postgres.env # configure postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/ # persist data even if container shuts down       
+volumes:
+  postgres-data: # named volumes can be managed easier using docker-compose

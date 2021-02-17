@@ -1,0 +1,6 @@
+FROM python:3
+WORKDIR /usr/src/app
+COPY ./script/create_postgres_table/ .
+RUN pip install psycopg2-binary
+CMD ["create_postgres_table.py"]
+ENTRYPOINT ["python3"]

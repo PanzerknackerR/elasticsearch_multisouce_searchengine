@@ -1,0 +1,6 @@
+FROM python:3
+WORKDIR /usr/src/app
+COPY ./script/event/ .
+RUN pip install elasticsearch
+CMD ["event.py"]
+ENTRYPOINT ["python3"]

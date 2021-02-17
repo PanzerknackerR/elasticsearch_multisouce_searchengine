@@ -1,0 +1,6 @@
+FROM python:3
+WORKDIR /usr/src/app
+COPY ./script/generate_data/ .
+RUN pip install psycopg2-binary
+CMD ["generate_data.py"]
+ENTRYPOINT ["python3"]

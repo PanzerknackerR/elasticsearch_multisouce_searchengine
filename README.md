@@ -1,6 +1,6 @@
 # elasticsearch_multisouce_searchengine
 
-#### preparations
+#### preparations:
 - you need  [docker](https://www.docker.com/get-started)
 - and  [docker-compose](https://docs.docker.com/compose/)
 
@@ -10,7 +10,7 @@
 #### architecture:
 ![archtitecture](https://github.com/PanzerknackerR/elasticsearch_multisouce_searchengine/blob/main/doc/figures/searchengine_architecture.png)
 
-#### supporting links used to build this system
+#### supporting links used to build this system:
 - https://www.docker.com/get-started
 - https://docs.docker.com/compose/
 - https://kb.objectrocket.com/postgresql/generate-postgres-test-data-with-python-part-1-1252

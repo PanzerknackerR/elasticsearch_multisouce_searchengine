@@ -1,7 +1,7 @@
 # elasticsearch_multisouce_searchengine
 
 #### the idea:
-![introduction](https://github.com/PanzerknackerR/elasticsearch_multisouce_searchengine/blob/main/doc/figures/introduction_withBackground.png)
+![introduction](https://github.com/PanzerknackerR/elasticsearch_multisouce_searchengine/blob/main/doc/figures/introduction_wide_withBackground.png)
 - no longer need to know the individual locations of the information you are looking for
 - no need to understand the data model, if given
 - no need to know the query syntax of the different source systems

@@ -6,7 +6,6 @@
 - no need to understand the data model, if given
 - no need to know the query syntax of the different source systems
 
-- 
 - only one location and one query language
 
 

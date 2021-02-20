@@ -116,8 +116,6 @@ services:
     container_name: demo_postgres_logstash
     # restart: on-failure
     depends_on:
-      - create_table-postgres
-      - generate_data-postgres
       - postgres
       - elasticsearch
     volumes:

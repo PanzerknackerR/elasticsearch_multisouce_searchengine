@@ -41,7 +41,8 @@ And now to the procedure:
    -  ```select * from books Limit 5;``` look at some entries 
    -  We have here a continuous adjustment by the Tigger, which is efficient, in contrast to a "Full Diff Compare". Continuous insertion strategy is defined in the pipeline.
 9. http://localhost:5601/app/dev_tools#/console now we can again look in Kibana in the Dev Tools
-   -  ```GET books/_search{
+   -  ```
+      GET books/_search{
       "query": {
          "match": {
            "isbn": "9780001000391"
@@ -61,7 +62,8 @@ And now to the procedure:
     - We have only ensured that a denominalization and also a continuous adjustment is possible.
 11. [1]: ```docker-compose up eventdata``` Here now runs a python script that pushes all always 10 entries into Elasticsearch. Time intervals from 0.0 always 0.01 second more pause, at 10 seconds it stops.
 12. http://localhost:5601/app/dev_tools#/console now we can again look in Kibana in the Dev Tools
-   -  ```GET event_data/_search{
+   -  ```
+      GET event_data/_search{
       "query": {
          "match": {
            "str_col": "Bestsellerlisten"

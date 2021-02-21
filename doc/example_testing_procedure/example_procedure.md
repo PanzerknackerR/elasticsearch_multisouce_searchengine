@@ -21,7 +21,8 @@ And now to the procedure:
    - [2]: ```select count(*) from python_test;``` Verify that the number of data is there
    - [2]: ```select * from python_test LIMIT 5;``` Verify that the data looks as expected
 5. http://localhost:5601/app/dev_tools#/console now we can also look in Kibana in the Dev Tools
-   -  ```GET python_test/_search{
+   -  ```
+      GET python_test/_search{
       "query": {
          "match": {
            "str_col": "Bestsellerlisten"
